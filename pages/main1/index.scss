@@ -1,0 +1,138 @@
+﻿@import "../css/base.scss";
+
+$baseColor: #fcffb4;
+$viewW: 750px;
+$bgColor: #fcfff8;
+$color: #fffb88;
+
+.zmiti-main-ui {
+    
+    &.main-enter-active,
+    &.main-leave-active {
+        @include transition(.4s);
+    }
+
+
+    &.main-leave-to,
+    &.main-enter {
+        opacity: 0;
+    }
+
+
+
+    width: $viewW !important;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+
+
+    
+    &.show {
+        @include transition(.5s);
+        z-index: 270;
+        opacity: 1;
+    }
+
+
+    z-index: -1;
+    opacity: 0;
+
+
+    .zmiti-view{
+
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        @include pos(a);
+        width: $viewW;
+        height: 100%;  
+       
+
+    }
+    
+    .zmiti-box-ui,.zmiti-translateZ{
+      
+        @include pos(a);
+        left: 50%;
+        top: 50%;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        .zmiti-translateZ{
+             
+        }
+        .zmiti-box-C{
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            width: 129px;
+            height: 1170px;
+            @include pos(a);
+            left: 50%;
+            top: 50%;
+            margin:-585px 0 0 -64.5px;
+
+            &.active{
+               // @include transform(rotateY(1080deg));
+
+            }
+            span{
+                left: 129px;
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                @include transformOrigin(left);
+            }
+            &>span{
+                left: 0;
+                @include transformOrigin(center center);
+            }
+        }
+
+        .zmiti-box-item{
+            @include pos(a);
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+    }
+
+}
+
+@media all and (max-height:1109px) {
+    .zmiti-question-img{
+        width: 350px  !important;
+        margin: 10px auto !important;
+    }
+    .zmiti-result-btns{
+        bottom:-100px;
+    }
+     .zmiti-right-remark{
+        h2{
+            text-align: left;
+        }
+        div{
+            width: 680px;
+            margin: 20px auto;
+            text-align: left;
+            text-indent: 2em;
+            font-size:34px;
+        }
+        }
+}
+ 
+
+@-webkit-keyframes info {
+    from {
+        -webkit-transform: translate3d(0, -30px, 0);
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes waiting {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}

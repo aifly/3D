@@ -1,0 +1,54 @@
+.lt-full {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.zmiti-text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis; }
+
+.zmiti-play {
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 1223000 !important;
+  right: .5rem;
+  top: .5rem; }
+  .zmiti-play.rotate {
+    -webkit-animation: rotate 5s linear infinite;
+    animation: rotate 5s linear infinite; }
+
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+.zmiti-index-main-ui {
+  overflow: hidden; }
+  .zmiti-prevent-img {
+    pointer-events: none; }
+  .zmiti-index-main-ui .zmiti-box-perspective {
+    perspective: 800px; }
+    .zmiti-index-main-ui .zmiti-box-perspective:hover .zmiti-box-3d {
+      transform: rotateY(1080deg); }
+    .zmiti-index-main-ui .zmiti-box-perspective .zmiti-box-3d {
+      transition: 20s linear;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      position: relative;
+      backface-visibility: hidden;
+      margin: 200px auto; }
+      .zmiti-index-main-ui .zmiti-box-perspective .zmiti-box-3d div {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden; }
+
+/*# sourceMappingURL=index.css.map */

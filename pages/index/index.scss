@@ -1,0 +1,46 @@
+﻿@import "../css/base.scss";
+
+$baseColor: #fcffb4;
+$viewW: 750px;
+$bgColor: #f23426;
+
+.zmiti-index-main-ui {
+    overflow: hidden;
+
+  
+    @at-root.zmiti-prevent-img{
+        pointer-events: none;
+    }
+    
+    .zmiti-box-perspective{
+        perspective:800px;
+        //perspective-origin: center top;
+        &:hover{
+            .zmiti-box-3d{
+                transform:rotateY(1080deg);
+            }    
+        }
+        .zmiti-box-3d{
+            transition: 20s linear;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+            @include pos(r);
+            backface-visibility: hidden;
+            margin:200px auto;
+            div{
+                @include pos(a);
+                left: 0;
+                top:0;
+                width:100%;
+                height: 100%;
+                backface-visibility: hidden;
+            }
+        }
+
+
+    }
+
+ 
+      
+}
