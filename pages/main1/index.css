@@ -51,6 +51,23 @@
     position: absolute;
     width: 750px;
     height: 100%; }
+    .zmiti-main-ui .zmiti-view:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.5);
+      -webkit-transform: translateZ(100px);
+      transform: translateZ(100px);
+      background-image: -webkit-radial-gradient(rgba(225, 225, 225, 0.1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), black);
+      -webkit-animation: light 3s infinite linear;
+      animation: light 3s infinite linear; }
+@-webkit-keyframes light {
+  to {
+    -webkit-transform: translateZ(100px) scale(10);
+    transform: translateZ(100px) scale(10); } }
   .zmiti-main-ui .zmiti-box-ui, .zmiti-main-ui .zmiti-translateZ {
     position: absolute;
     left: 50%;
