@@ -195,11 +195,11 @@
   				var box = this.$refs['box'];
   				setTimeout(()=>{
   					var spans = box.querySelectorAll('span');
-  					var R1 = Math.tan(Math.PI/180*((180-360/this.bgImgs.length)/2))*129/2;
-  					zmitiAnimate.css(box,'rotateY',70);
+  					var R1 = Math.tan(Math.PI/180*((180-360/this.bgImgs.length)/2))*750/2;
+  					zmitiAnimate.css(box,'rotateY',80);
   					zmitiAnimate.css(box,'translateZ',-R1);
-  					zmitiAnimate.css(toZ,'translateX',-1800);
-  					zmitiAnimate.css(toZ,'translateZ',1800);
+  					zmitiAnimate.css(toZ,'translateX',-4800);
+  					zmitiAnimate.css(toZ,'translateZ',4800);
   					for(var i = 0;i<spans.length;i++){
   						zmitiAnimate.css(spans[i],'rotateY',0);
   						
@@ -209,7 +209,7 @@
   						el:toZ,
   						attrs:{
   							translateX: 0,
-							translateZ: -320
+							translateZ: -520
   						},
   						fx:"easeOut",
   						duration:3700

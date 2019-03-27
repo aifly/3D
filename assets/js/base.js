@@ -28,7 +28,7 @@ boxImgs.forEach(function(item,i){
   window.imgs['index'+(i+1)] = item.img;
 });
 var bgImgs = [];
-for(var i = 0;i<20;i++){
+for(var i = 0;i<16;i++){
 
   window.imgs['img'+(i+1)] = './assets/images/bg/'+(i+1)+'.png';
   bgImgs.push({

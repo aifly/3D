@@ -4,111 +4,133 @@ $baseColor: #fcffb4;
 $viewW: 750px;
 $bgColor: #fcfff8;
 $color: #fffb88;
-
+body{
+    background: #ddd;
+}
 .zmiti-main-ui {
-    
     &.main-enter-active,
     &.main-leave-active {
-        @include transition(.4s);
+        @include transition(0.4s);
     }
-
 
     &.main-leave-to,
     &.main-enter {
         opacity: 0;
     }
 
-
-
     width: $viewW !important;
     left: 0;
     top: 0;
     overflow: hidden;
 
-
-    
     &.show {
-        @include transition(.5s);
+        @include transition(0.5s);
+
         z-index: 270;
         opacity: 1;
     }
 
-
     z-index: -1;
     opacity: 0;
 
-
-    .zmiti-view{
-
+    .zmiti-view {
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
-        @include pos(a);
-        width: $viewW;
-        height: 100%;  
 
-        &:before{
-            content:'';
+        @include pos(a);
+
+        width: $viewW;
+        height: 100%;
+
+        &:before {
+            content: '';
+
             @include pos(a);
+
             width: 100%;
             height: 100%;
-            left: 0;
-            top: 0;
-            background:rgba(0,0,0,.5);
+
+            
+            background: rgba(0, 0, 0, 0.5);
+
             @include transform(translateZ(100px));
-            background-image: -webkit-radial-gradient(rgba(225,225,225,.1),rgba(0,0,0,.7),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,1));
-            @include animation(light 3s infinite linear);
-        }
-       
 
-    }
+            background-image: -webkit-radial-gradient(rgba(225, 225, 225, 0.1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1));
 
-
-    @-webkit-keyframes light{
-        to{
-            @include transform(translateZ(100px) scale(10));
+           @include animation(light 2s  linear forwards);
         }
     }
 
+    @-webkit-keyframes light {
+        to {
+            @include transform(translate3d(0,0,100px) scale(10));
+            //opacity: 0;
+        }
+    }
 
-    
-    .zmiti-box-ui,.zmiti-translateZ{
-      
+    .zmiti-box-ui{
+       z-index: 10;
+       width:100%;
+       left:0 !important;
+       top: 0 !important;
+       height: 100%;
+    }
+    .zmiti-box-bg{
+        z-index: 0;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        left: 0 !important;
+        display: none;
+        top: 0 !important;
+
+    }
+
+    .zmiti-box-ui, .zmiti-translateZ {
         @include pos(a);
+
         left: 50%;
         top: 50%;
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
-        .zmiti-translateZ{
-             
-        }
-        .zmiti-box-C{
+
+        .zmiti-translateZ {}
+
+        .zmiti-box-C {
             -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
-            width: 129px;
-            height: 1170px;
+            width: 750px;
+            height: 1344px;
+
             @include pos(a);
+
             left: 50%;
             top: 50%;
-            margin:-585px 0 0 -64.5px;
+            margin: -672px 0 0 -375px;
 
-            &.active{
-               // @include transform(rotateY(1080deg));
-
+            &.active {
+                // @include transform(rotateY(1080deg));
+           
             }
-            span{
-                left: 129px;
+
+            span {
+                left: 750px;
                 -webkit-transform-style: preserve-3d;
                 transform-style: preserve-3d;
+
                 @include transformOrigin(left);
             }
-            &>span{
+
+            & > span {
                 left: 0;
+
                 @include transformOrigin(center center);
             }
         }
 
-        .zmiti-box-item{
+        .zmiti-box-item {
             @include pos(a);
+
             width: 100%;
             height: 100%;
             left: 0;
@@ -117,31 +139,32 @@ $color: #fffb88;
             -webkit-backface-visibility: hidden;
         }
     }
-
 }
 
-@media all and (max-height:1109px) {
-    .zmiti-question-img{
+@media all and (max-height: 1109px) {
+    .zmiti-question-img {
         width: 350px  !important;
         margin: 10px auto !important;
     }
-    .zmiti-result-btns{
-        bottom:-100px;
+
+    .zmiti-result-btns {
+        bottom: -100px;
     }
-     .zmiti-right-remark{
-        h2{
+
+    .zmiti-right-remark {
+        h2 {
             text-align: left;
         }
-        div{
+
+        div {
             width: 680px;
             margin: 20px auto;
             text-align: left;
             text-indent: 2em;
-            font-size:34px;
+            font-size: 34px;
         }
-        }
+    }
 }
- 
 
 @-webkit-keyframes info {
     from {
