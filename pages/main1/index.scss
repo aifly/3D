@@ -4,9 +4,11 @@ $baseColor: #fcffb4;
 $viewW: 750px;
 $bgColor: #fcfff8;
 $color: #fffb88;
-body{
+
+body {
     background: #ddd;
 }
+
 .zmiti-main-ui {
     &.main-enter-active,
     &.main-leave-active {
@@ -49,33 +51,34 @@ body{
 
             width: 100%;
             height: 100%;
-
-            
             background: rgba(0, 0, 0, 0.5);
 
             @include transform(translateZ(100px));
 
             background-image: -webkit-radial-gradient(rgba(225, 225, 225, 0.1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1));
 
-           @include animation(light 2s  linear forwards);
+            @include animation(light 2s linear forwards);
         }
     }
 
     @-webkit-keyframes light {
         to {
-            @include transform(translate3d(0,0,100px) scale(10));
+            @include transform(translate3d(0, 0, 100px) scale(10));
+
             //opacity: 0;
+       
         }
     }
 
-    .zmiti-box-ui{
-       z-index: 10;
-       width:100%;
-       left:0 !important;
-       top: 0 !important;
-       height: 100%;
+    .zmiti-box-ui {
+        z-index: 10;
+        width: 100%;
+        left: 0 !important;
+        top: 0 !important;
+        height: 100%;
     }
-    .zmiti-box-bg{
+
+    .zmiti-box-bg {
         z-index: 0;
         width: 100vw;
         height: 100vh;
@@ -83,7 +86,6 @@ body{
         left: 0 !important;
         display: none;
         top: 0 !important;
-
     }
 
     .zmiti-box-ui, .zmiti-translateZ {
@@ -138,6 +140,213 @@ body{
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
         }
+    }
+
+    .candle {
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+        right: 0;
+        width: 40px;
+        margin: auto;
+        z-index: 100;;
+    }
+
+    .candle-body {
+        width: 40px;
+        height: 120px;
+        background-color: #E90018;
+        border-radius: 0 0 40px 40px/0 0 16px 16px;
+        box-shadow: inset 8px 0 12px rgba(0, 0, 0, 0.1), inset -8px 0 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .candle-body::before {
+        content: '';
+        position: absolute;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #EF4D65;
+        top: -8px;
+        left: 0;
+        right: 0;
+        box-shadow: inset 0 0 20px #E90018, inset 0 0 5px rgba(0, 0, 0, 0.2), 0 1px rgba(0, 0, 0, 0.05), inset 0 2px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 蜡烛芯 */
+    .candle-body::after {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -20px;
+        margin: auto;
+        background: #fff;
+        background-image: linear-gradient(to bottom, #311, #edd3d1 70%, #edd3d1);
+        border-radius: 0 0 4px 4px/0 0 2px 2px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    }
+
+    /* 火焰 */
+    .candle-flame {
+        @include animation(flicker 3s infinite ease-out alternate);
+        background-image: -webkit-radial-gradient(ellipse at 5px 20px, rgba(75, 95, 124, 0), hsla(0, 0%, 100%, 0.5), #fff);
+        background-image: radial-gradient(ellipse at 5px 20px, rgba(75, 95, 124, 0), hsla(0, 0%, 100%, 0.5), #fff);
+        border-radius: 37% 37% 34% 34%/70% 70% 33% 33%;
+        box-shadow: 0 -8px 8px 4px #fff, 0 -15px 15px 12px #ff0, 0 -15px 0 14px #f00;
+        width: 10px;
+        height: 20px;
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        top: -24px;
+        margin: auto;
+        transform-origin: center bottom;
+        filter: blur(2px);
+    }
+
+    .out .candle-flame {
+        display: none;
+    }
+
+    @-webkit-keyframes flicker {
+        0% {
+            transform: scale(1);
+        }
+
+        20% {
+            transform: scale(1.1, 0.9) rotate(3deg);
+        }
+
+        50% {
+            transform: scale(1, 1.2);
+        }
+
+        80% {
+            transform: scale(0.9, 1.1) rotate(-3deg);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .candle-smoke {
+        position: absolute;
+        left: 50%;
+        top: -15px;
+        transform-origin: bottom center;
+        transform: scale(0.5);
+        filter: blur(3px);
+        opacity: 0;
+    }
+
+    .out .candle-smoke {
+        animation: smokeOut 30s both;
+    }
+
+    @-webkit-keyframes smokeOut {
+        10% {
+            opacity: 1;
+        }
+        0%,100% {
+            opacity: 0;
+        }
+    }
+
+    /* 烟雾元素们 */
+    .candle-smoke span {
+        position: absolute;
+        bottom: -9px;
+        left: -9px;
+        width: 18px;
+        height: 18px;
+        background-image: radial-gradient(closest-side circle, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+        border-radius: 18px;
+        opacity: 0;
+    }
+
+    .candle:not(.out) .candle-smoke span {
+        animation: none;
+    }
+
+    /* 烟雾动画 */
+    @keyframes smokeL {
+        0% {
+            opacity: 0;
+            transform: scale(1) translate(0, 0);
+        }
+
+        10% {
+            opacity: .8;
+            transform: scale(1) translate(0, -7px);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(5) translate(-4px, -26px);
+        }
+    }
+
+    @keyframes smokeR {
+        0% {
+            opacity: 0;
+            transform: scale(1) translate(0, 0);
+        }
+
+        10% {
+            opacity: .8;
+            transform: scale(1) translate(0, -7px);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(5) translate(4px, -26px);
+        }
+    }
+
+    .candle-smoke .s0 {
+        animation: smokeL 10s 0s infinite;
+    }
+
+    .candle-smoke .s1 {
+        animation: smokeR 10s 1s infinite;
+    }
+
+    .candle-smoke .s2 {
+        animation: smokeL 10s 2s infinite;
+    }
+
+    .candle-smoke .s3 {
+        animation: smokeR 10s 3s infinite;
+    }
+
+    .candle-smoke .s4 {
+        animation: smokeL 10s 4s infinite;
+    }
+
+    .candle-smoke .s5 {
+        animation: smokeR 10s 5s infinite;
+    }
+
+    .candle-smoke .s6 {
+        animation: smokeL 10s 6s infinite;
+    }
+
+    .candle-smoke .s7 {
+        animation: smokeR 10s 7s infinite;
+    }
+
+    .candle-smoke .s8 {
+        animation: smokeL 10s 8s infinite;
+    }
+
+    .candle-smoke .s9 {
+        animation: smokeR 10s 9s infinite;
     }
 }
 
